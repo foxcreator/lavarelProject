@@ -17,16 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 //
-//Route::get('/', function (){
-//    return view('dashboard');
-//})->middleware(['auth'])->name('dashboard');
+
+Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(function (){
+    Route::get('/dashboard', function (){
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::resource('product', \App\Http\Controllers\Admin\ProductController::class)->except(['show']);
+});
+
+Route::get('/dashboard', function (){
+    return view('');
+})->middleware(['auth', 'admin'])->name('dashboard');
+
+
+
+
+\Illuminate\Support\Facades\Auth::routes();
 //
-//require __DIR__ . '/auth.php';
-Auth::routes();
+Route::get('/home',
+    [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
