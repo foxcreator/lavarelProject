@@ -30,20 +30,30 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @auth
+                            @if(Request::is('admin/*'))
+                                @include('navigations.admin_nav')
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+{{--                            <a class="nav-link" href="{{ route('cart') }}">--}}
+{{--                                {{ __('Cart') }} @if(Cart::instance('cart')->count() > 0) ---}}
+{{--                                <strong>{{ Cart::instance('cart')->count() }}</strong> @endif--}}
+{{--                            </a>--}}
+                        </li>
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (\Illuminate\Support\Facades\Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (\Illuminate\Support\Facades\Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
@@ -51,10 +61,13 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+{{--                                    <a class="dropdown-item" href="{{ route('account.index') }}">--}}
+{{--                                        {{ __('Account') }}--}}
+{{--                                    </a>--}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -73,8 +86,25 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if(session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if(session('warn'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('warn') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
+    @stack('footer-scripts')
 </body>
 </html>

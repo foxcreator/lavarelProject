@@ -1,17 +1,12 @@
 <?php
 
-use App\Helpers\Enums\Roles;
 use App\Models\User;
+use App\Helpers\Enums\Roles;
 
 if (!function_exists('isAdmin'))
 {
     function isAdmin(User $user): bool
     {
-
-        $adminRole = Role::admin()->first();
-
-        return $user->role->name === Roles::Admin->value;
+        return $user->role->name === \App\Helpers\Enums\Roles::Admin->value;
     }
-
-
 }

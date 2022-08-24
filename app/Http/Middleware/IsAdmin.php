@@ -16,9 +16,8 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!isAdmin($request->user())){
-            return redirect('/')->with('warn', 'You don\'t have permissions for this page');
-
+        if (!isAdmin($request->user())) {
+            return redirect('/')->with('warn', 'You don\'t have permissions for this page.');
         }
 
         return $next($request);
