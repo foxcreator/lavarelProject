@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateProductRequest;
-use App\Http\Requests\UpdateProductRequest;
+//use App\Http\Requests\CreateProductRequest;
+//use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use App\Repositories\Contracts\ProductRepositoryContract;
-use App\Services\Contracts\FileStorageServiceContract;
-use App\Services\FileStorageService;
+//use App\Repositories\Contracts\ProductRepositoryContract;
+//use App\Services\Contracts\FileStorageServiceContract;
+//use App\Services\FileStorageService;
 use App\Services\ImagesService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
-    public function __construct(protected ProductRepositoryContract $productRepository) {}
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -37,17 +36,13 @@ class ProductsController extends Controller
     }
 
     /**
-     * @param CreateProductRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function store(CreateProductRequest $request)
+    public function store(Request $request)
     {
-        if ($product = $this->productRepository->create($request)) {
-            return redirect()->route('admin.products.index')->with('status', "The product #{$product->id} was successfully created!");
-        } else {
-            return redirect()->back()->with('warn', 'Oops smth wrong. See logs')->withInput();
-        }
+        //
     }
 
     /**
@@ -61,18 +56,14 @@ class ProductsController extends Controller
     }
 
     /**
-     * @param UpdateProductRequest $request
+     * @param Request $request
      * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        if ($this->productRepository->update($product, $request)) {
-            return redirect()->route('admin.products.index')->with('status', "The product #{$product->id} was successfully updated!");
-        } else {
-            return redirect()->back()->with('warn', 'Oops smth wrong. See logs')->withInput();
-        }
+       //
     }
 
     /**
@@ -81,8 +72,6 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return redirect()->route('admin.products.index')
-            ->with('status', "The product #{$product->id} was successfully removed!");
+        //
     }
 }
