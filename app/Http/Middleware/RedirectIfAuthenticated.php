@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 $path = isAdmin($request->user()) ? RouteServiceProvider::HOME : RouteServiceProvider::CUSTOMER_HOME;
 
-                return redirect(RouteServiceProvider::HOME);
+                return redirect($path);
             }
         }
 
