@@ -6,11 +6,12 @@ use App\Services\Contracts\FileStorageServiceContract;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 
 class FileStorageService implements FileStorageServiceContract
 {
 
-    public static function upload($file): string
+    public static function upload(UploadedFile | string $file): string
     {
         if (is_string($file)) {
             return str_replace('public/storage', '', $file);

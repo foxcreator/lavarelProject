@@ -48,13 +48,15 @@ class ProductsController extends Controller
             DB::beginTransaction();
 
             $data = $request->validated();
+            $images = $data['images'] ?? [];
             $category = Category::find($data['category']);
             $product = $category->products()->create($data);
+            ImagesService::attach($product, 'images', $images);
 
             DB::commit();
 
             return redirect()->route('admin.products.index')
-                ->with('status', "The product #{$product->id} was success");
+                ->with('status', "The product #{$product->id} was success")->withInput();
 
         } catch (\Exception $e){
             DB::rollBack();
