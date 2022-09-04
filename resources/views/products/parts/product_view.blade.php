@@ -12,7 +12,7 @@
                 <small class="text-muted">Categories: </small>
                 <div class="btn-group align-self-end">
                     @if(!empty($product->category))
-                        @include('categories.parts.category_view', ['category' => $product->category])
+                        @include('admin.categories.parts.category_view', ['category' => $product->category])
                     @endif
                 </div>
             </div>

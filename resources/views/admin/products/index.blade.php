@@ -32,7 +32,7 @@
                             <td class="text-center" scope="col">{{ $product->title }}</td>
                             <td class="text-center" scope="col">{{ $product->in_stock }}</td>
                             <td class="text-center" scope="col">
-                                @include('categories.parts.category_view', ['category' => $product->category])
+                                @include('admin.categories.parts.category_view', ['category' => $product->category])
                             </td>
                             <td class="text-center" scope="col">
                                 <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-info form-control">Edit</a>

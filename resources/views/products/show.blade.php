@@ -21,7 +21,7 @@
             <p>Rating: {{ round($product->averageRating(), 2) }}</p>
             <hr>
             <div>
-                <p>Product Category: <b> @include('categories.parts.category_view', ['category' => $product->category])</b></p>
+                <p>Product Category: <b> @include('admin.categories.parts.category_view', ['category' => $product->category])</b></p>
             </div>
 {{--            @if($product->in_stock > 0)--}}
 {{--                <hr>--}}

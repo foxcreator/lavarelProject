@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/js/image-preview.js',
+                'resources/js/images-actions.js',
             ],
             refresh: true,
         }),
