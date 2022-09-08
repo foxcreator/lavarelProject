@@ -26,7 +26,7 @@ class FileStorageService implements FileStorageServiceContract
 
     public static function remove($file)
     {
-        // TODO: Implement remove() method.
+        Storage::delete($file);
     }
 
     protected static function randomName(): string

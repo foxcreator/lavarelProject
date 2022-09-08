@@ -11,7 +11,7 @@
                         <div class="album py-5 bg-light">
                             <div class="container">
                                 <div class="row">
-{{--                                    @each('products.parts.product_view', $products, 'product')--}}
+                                    @each('products.parts.product_view', $products, 'product')
                                 </div>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                         <div class="album py-5 bg-light">
                             <div class="container">
                                 <div class="row d-flex justify-content-center align-items-center">
-{{--                                    @each('categories.parts.category_view', $categories, 'category')--}}
+                                    @each('categories.parts.category_view', $categories, 'category')
                                 </div>
                             </div>
                         </div>

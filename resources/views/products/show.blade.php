@@ -9,7 +9,7 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            @if(Storage::has($product->thumbnail))
+            @if(\Illuminate\Support\Facades\Storage::has($product->thumbnail))
                 <img src="{{ $product->thumbnailUrl }}" class="card-img-top"
                      style="width: 200px; height: 300px; margin: 0 auto; display: block;">
             @endif
@@ -23,28 +23,28 @@
             <div>
                 <p>Product Category: <b> @include('admin.categories.parts.category_view', ['category' => $product->category])</b></p>
             </div>
-{{--            @if($product->in_stock > 0)--}}
-{{--                <hr>--}}
-{{--                <div>--}}
-{{--                    <p>Add to Cart: </p>--}}
-{{--                    <form action="{{ route('cart.add', $product) }}" method="POST" class="form-inline">--}}
-{{--                        @csrf--}}
-{{--                        @method('post')--}}
-{{--                        <div class="form-group col-sm-3 mb-2">--}}
-{{--                            <label for="product_count" class="sr-only">Count: </label>--}}
-{{--                            <input type="number"--}}
-{{--                                   name="product_count"--}}
-{{--                                   class="form-control"--}}
-{{--                                   id="product_count"--}}
-{{--                                   min="1"--}}
-{{--                                   max="{{ $product->in_stock }}"--}}
-{{--                                   value="1"--}}
-{{--                            >--}}
-{{--                        </div>--}}
-{{--                        <button type="submit" class="btn btn-primary mb-2">Buy</button>--}}
-{{--                    </form>--}}
-{{--                </div>--}}
-{{--            @endif--}}
+            @if($product->in_stock > 0)
+                <hr>
+                <div>
+                    <p>Add to Cart: </p>
+                    <form action="{{ route('cart.add', $product) }}" method="POST" class="form-inline">
+                        @csrf
+                        @method('post')
+                        <div class="form-group col-sm-3 mb-2">
+                            <label for="product_count" class="sr-only">Count: </label>
+                            <input type="number"
+                                   name="product_count"
+                                   class="form-control"
+                                   id="product_count"
+                                   min="1"
+                                   max="{{ $product->in_stock }}"
+                                   value="1"
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Buy</button>
+                    </form>
+                </div>
+            @endif
             @auth
                 <form class="form-horizontal poststars" action="{{ route('product.rating.add', $product) }}" id="addStar"
                       method="POST">
@@ -82,16 +82,16 @@
                     </div>
                 </form>
                 <hr>
-                @if(is_user_followed($product))
-                    <form action="{{ route('wishlist.delete', $product) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" class="btn btn-danger" value="Remove from Wish List">
-                    </form>
-                @else
-                    <a href="{{ route('wishlist.add', $product) }}"
-                       class="btn btn-success">{{ __('Add to Wish List') }}</a>
-                @endif
+{{--                @if(is_user_followed($product))--}}
+{{--                    <form action="{{ route('wishlist.delete', $product) }}" method="POST">--}}
+{{--                        @csrf--}}
+{{--                        @method('DELETE')--}}
+{{--                        <input type="submit" class="btn btn-danger" value="Remove from Wish List">--}}
+{{--                    </form>--}}
+{{--                @else--}}
+{{--                    <a href="{{ route('wishlist.add', $product) }}"--}}
+{{--                       class="btn btn-success">{{ __('Add to Wish List') }}</a>--}}
+{{--                @endif--}}
             @endauth
         </div>
     </div>

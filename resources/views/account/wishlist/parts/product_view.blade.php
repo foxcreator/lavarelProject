@@ -6,7 +6,7 @@ $class = $row->price > $row->model->endPrice ? 'text-success' : 'text-danger';
         <img src="{{ $row->model->thumbnailUrl }}" alt="{{ $row->name }}" style="width: 75px;">
     </td>
     <td>
-        <a href="{{ route('products.show', $row->id) }}"><strong>{{ $row->name }}</strong></a>
+        <a href="{{ route('products.store', $row->id) }}"><strong>{{ $row->name }}</strong></a>
     </td>
     <td>{{ $row->price }}$</td>
     <td class="{{ $class }}">{{ $row->model->endPrice }}$</td>
