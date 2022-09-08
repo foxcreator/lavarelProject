@@ -5,12 +5,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
+        "bumbummen99/shoppingcart": "^4.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "symfony/var-dumper": "6.0.9"
+        "laravel/ui": "^4.0",
+        "symfony/var-dumper": "6.0.9",
+        "willvincent/laravel-rateable": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -26,12 +29,16 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "./app/Helpers/is_admin.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
+
     },
     "scripts": {
         "post-autoload-dump": [
