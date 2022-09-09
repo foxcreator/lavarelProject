@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-{{--    @include('account.parts.nav')--}}
-{{--    <div class="container">--}}
-{{--        <div class="row justify-content-center">--}}
-{{--            <div class="col-md-8">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">{{ __('Edit Profile Data') }}</div>--}}
-{{--                    @if ($errors->any())--}}
-{{--                        {{ implode('', $errors->all('<div>:message</div>')) }}--}}
-{{--                    @endif--}}
-{{--                    <div class="card-body">--}}
-{{--                        <form method="POST" action="{{ route('account.update', $user) }}">--}}
-{{--                            @csrf--}}
-{{--                            @method('PUT')--}}
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>--}}
+    @include('account.parts.nav')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Edit Profile Data') }}</div>
+                    @if ($errors->any())
+                        {{ implode('', $errors->all('<div>:message</div>')) }}
+                    @endif
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('account.update', $user) }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-{{--                                <div class="col-md-6">--}}
-{{--                                    <input id="role_id" type="hidden" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ $user->role_id }}" autocomplete="role_id" autofocus>--}}
-{{--                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" autocomplete="name" autofocus>--}}
+                                <div class="col-md-6">
+                                    <input id="role_id" type="hidden" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ $user->role_id }}" autocomplete="role_id" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" autocomplete="name" autofocus>
 
-{{--                                    @error('name')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
