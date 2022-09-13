@@ -14,30 +14,30 @@
                 @endif
             </div>
             <div class="col-12">
-{{--                @if(Cart::instance('wishlist')->count() > 0)--}}
-{{--                    <table class="table table-light">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th></th>--}}
-{{--                            <th>Product</th>--}}
-{{--                            <th>Old Price</th>--}}
-{{--                            <th>Current Price</th>--}}
-{{--                            <th>Available</th>--}}
-{{--                            <th>Remove</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
+                @if(Cart::instance('wishlist')->count() > 0)
+                    <table class="table table-light">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product</th>
+                            <th>Old Price</th>
+                            <th>Current Price</th>
+                            <th>Available</th>
+                            <th>Remove</th>
+                        </tr>
+                        </thead>
 
-{{--                        <tbody>--}}
-{{--                        @each(--}}
-{{--                            'account.wishlist.parts.product_view',--}}
-{{--                            Cart::instance('wishlist')->content(),--}}
-{{--                            'row'--}}
-{{--                        )--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                @else--}}
-{{--                    <h3 class="text-center">There are no products in your wish list</h3>--}}
-{{--                @endif--}}
+                        <tbody>
+                        @each(
+                            'account.wishlist.parts.product_view',
+                            Cart::instance('wishlist')->content(),
+                            'row'
+                        )
+                        </tbody>
+                    </table>
+                @else
+                    <h3 class="text-center">There are no products in your wish list</h3>
+                @endif
             </div>
         </div>
     </div>

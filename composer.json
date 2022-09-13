@@ -9,9 +9,11 @@
         "bumbummen99/shoppingcart": "^4.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
+        "laravel/horizon": "^5.10",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
+        "predis/predis": "^2.0",
         "symfony/var-dumper": "6.0.9",
         "willvincent/laravel-rateable": "^3.0"
     },
@@ -31,7 +33,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "./app/Helpers/is_admin.php"
+            "./app/Helpers/is_admin.php",
+            "./app/Helpers/is_user_followed.php"
         ]
     },
     "autoload-dev": {
